@@ -94,6 +94,9 @@ fun! s:InfoExec(file, node, ...)
 	setf info
         setlocal modifiable noswapfile buftype=nofile bufhidden=delete
 
+        " Info buffers shouldn't be part of saved buffer list (in case 'shada' contains %)
+        autocmd bufwinleave <buffer> setlocal nobuflisted
+
 	let cmd = s:infoCmd." '".a:file.a:node."' 2>/dev/null"
 
 	" handle shell redirection portable
