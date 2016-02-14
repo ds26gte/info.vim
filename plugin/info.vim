@@ -85,10 +85,10 @@ fun! s:InfoExec(file, node, ...)
 	    silent exe 'sb' escape(bufname, '\ ')
 	endif
     else
-    	if &ft == 'info'
+    	if &ft == 'info' || bufname('%') == ''
 	    let command = 'e!'
 	else
-	    let command = 'new'
+	    let command = 'tabnew'
 	endif
 	silent! exe command escape(bufname, '\ ')
 	setf info
