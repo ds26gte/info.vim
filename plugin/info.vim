@@ -81,7 +81,7 @@ fun! s:InfoExec(file, node, ...)
     if buflisted(bufname) && a:0 < 2
 	if &ft == 'info'
 	    silent exe 'b!' escape(bufname, '\ ')
-	else 
+	else
 	    silent exe 'sb' escape(bufname, '\ ')
 	endif
     else
@@ -90,8 +90,9 @@ fun! s:InfoExec(file, node, ...)
 	else
 	    let command = 'new'
 	endif
-	silent! exe command "+exe'setlocal''modifiable''noswapfile''buftype=nofile''bufhidden=delete'" escape(bufname, '\ ')
+	silent! exe command escape(bufname, '\ ')
 	setf info
+        setlocal modifiable noswapfile buftype=nofile bufhidden=delete
 
 	let cmd = s:infoCmd." '".a:file.a:node."' 2>/dev/null"
 
@@ -297,7 +298,7 @@ fun! s:FollowLink()
 	if exists('g:info_debug')
 	    echo 'current_line:' current_line
 	endif
-	
+
 	let link_pattern = '\*[Nn]ote [^:.]\+: \([^.,]\+\)\%([,.]\|$\)'
 	let link = matchstr(current_line, link_pattern)
 	if link == ''
