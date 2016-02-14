@@ -39,7 +39,7 @@ let s:notePattern = '\*[Nn]ote\%(\s\|$\)'
 let s:indexPattern = '^\* [^:]*:\s*\([^.]*\)\.$'
 let s:indexPatternHL = '^\* [^:]*:\s\+[^(]'
 
-command! -nargs=* Info	call s:Info(<f-args>)
+command! -nargs=* -complete=shellcmd Info call s:Info(<f-args>)
 
 fun! s:Info(...)
     let file = "(dir)"
