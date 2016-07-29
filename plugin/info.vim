@@ -36,7 +36,7 @@ endif
 let s:dirPattern = '^\* [^:]*: \(([^)]*)\)'
 let s:menuPattern = '^\* \([^:]*\)::'
 let s:notePattern = '\*[Nn]ote\%(\s\|$\)'
-let s:indexPattern = '^\* [^:]*:\s*\([^.]*\)\.$'
+let s:indexPattern = '^\* [^:]*:\s*\([^.]*\)\.'
 let s:indexPatternHL = '^\* [^:]*:\s\+[^(]'
 
 command! -nargs=* -complete=shellcmd Info call s:Info(<f-args>)
@@ -162,6 +162,7 @@ fun! s:InfoBufferInit()
 "    noremap <buffer> l		:call <SID>LastNode()<cr>
     noremap <buffer> ;		:call <SID>LastNode()<cr>
     noremap <buffer> <C-T>	:call <SID>LastNode()<cr>
+    noremap <buffer> <C-O> 	:call <SID>LastNode()<cr>
     noremap <buffer> <C-S>	/
     " FIXME: <n> is go to next match
 "    noremap <buffer> n		:call <SID>NextNode()<cr>
@@ -190,7 +191,7 @@ fun! s:Help()
     echo '<Backspace>	Scroll backward (page up).'
     echo '<Tab>		Move cursor to next hyperlink within this node.'
     echo '<Enter>,<C-]>	Follow hyperlink under cursor.'
-    echo ';,<C-T>		Return to last seen node.'
+    echo ';,<C-T>,<C-O>	Return to last seen node.'
     echo '.,>		Move to the "next" node of this node.'
     echo 'p,<		Move to the "previous" node of this node.'
     echo 'u		Move "up" from this node.'
